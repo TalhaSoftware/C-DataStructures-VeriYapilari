@@ -6,9 +6,9 @@ using namespace std;
 
 class Stacks{
 	private:
-		int Max=5;
+		int Max=2;
 		int boyut=0;
-		int *size = (int *)malloc(boyut*sizeof(int));
+		int *size = (int *)malloc(Max*sizeof(int));
 		
 	public:
 		
@@ -55,8 +55,10 @@ void Stacks::push(int x)
    bool Stacks::push(int item)
    {
       if (boyut >= Max) {
-      cout << "Stack Overflow!!!";
-      return false;
+      Max = Max * 2;
+      size[boyut] = item;
+   boyut++;
+   return true;
    }
 else {
    size[boyut] = item;
@@ -78,7 +80,7 @@ void menu()
 		if(islem == 1)
 		{
 			int deger = 0;
-			cout << "Eklemek istediğiniz Değer : " << endl;
+			cout << "Eklemek istedi?iniz De?er : " << endl;
 			cin >> deger;
 			stack.push(deger);
 		}
@@ -117,7 +119,7 @@ int main()
 	stack.push(17);
 	stack.print();
 	stack.pop();
-	cout << "Pop sonrası print " << endl;
+	cout << "Pop sonrasy print " << endl;
 	stack.print();
 	cout << "Peek Value : " << stack.peek() << endl;	
 	*/
